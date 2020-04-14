@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'knox',
     'custom_user',
     'utils',
-    'user'
+    'user',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,7 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'user.User'
 
 REST_KNOX = {
-    'USER_SERIALIZER': 'user.serializers.UserSerializer',
+    'USER_SERIALIZER': 'api.v1_0_0.serializers.user_serializers.UserSerializer',
 }
 
 REST_FRAMEWORK = {
