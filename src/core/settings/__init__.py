@@ -16,7 +16,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-
 try:
     from .local import *
 except ImportError:
@@ -61,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-] + ['querycount.middleware.QueryCountMiddleware'] if DEBUG else []
+] + (['querycount.middleware.QueryCountMiddleware'] if DEBUG else [])
 
 ROOT_URLCONF = 'core.urls'
 

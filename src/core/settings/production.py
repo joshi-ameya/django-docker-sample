@@ -9,20 +9,22 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'false').lower() == "true"
-
+# DEBUG = True
 # DEFAULT_CONNECTION = dj_database_url.parse(
-#     os.environ.get(os.environ.get("DATABASE_URL_CONFIG")))
+#     os.environ.get("DATABASE_URL_CONFIG"))
+# DEFAULT_CONNECTION = dj_database_url.parse(
+#     "postgres://postgres:ameya1993@database-2.ct1zyytqf3gw.us-east-2.rds.amazonaws.com:5432/sharebucktest")
 # DEFAULT_CONNECTION.update({"CONN_MAX_AGE": 600})
 # DATABASES = {"default": DEFAULT_CONNECTION}
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_docker',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': os.environ.get("POSTGRES_NAME"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': os.environ.get("POSTGRES_HOST"),
+        # 'PORT': '5432',
         'ATOMIC_REQUESTS': True
     }
 }
