@@ -1,13 +1,9 @@
-FROM postgres:11-alpine
+FROM python:3
+ENV PYTHONUNBUFFERED 1
 
-WORKDIR /usr/src/app
-COPY requirements.txt /usr/src/app
-COPY /requirements /usr/src/app
-
-RUN apk add --no-cache --virtual .build-deps \
-  ca-certificates libressl-dev gcc python3 python3-dev py-pip linux-headers libffi-dev \
-  musl-dev  jpeg-dev zlib-dev
-
+RUN mkdir /code
+WORKDIR /code
+COPY requirements.txt /code/
+COPY requirements /code/requirements
 RUN pip install -r requirements.txt
-
-COPY src /usr/src/app
+COPY . /code/

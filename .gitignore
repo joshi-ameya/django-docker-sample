@@ -76,3 +76,4 @@ target/
 src/*/settings/local.py
 
 .vscode
+.env
