@@ -77,3 +77,6 @@ src/*/settings/local.py
 
 .vscode
 .env
+
+credentials.json
+token.pickle

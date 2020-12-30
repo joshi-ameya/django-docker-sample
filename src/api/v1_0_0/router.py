@@ -11,6 +11,7 @@ __all__ = ['urlpatterns', ]
 
 router = routers.DefaultRouter(trailing_slash=settings.APPEND_SLASH, )
 router.register(r'user', views.UserViewSet, basename='user', )
+router.register(r'gmail', views.GmailViewSet, basename='gmail')
 
 urlpatterns = [
     path('login', views.UserLoginView.as_view(), name='login'),
