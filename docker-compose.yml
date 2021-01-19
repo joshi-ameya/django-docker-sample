@@ -1,18 +1,9 @@
-version: '3'
-    
+version: "3"
+
 services:
-  db:
-    image: postgres:11-alpine
-    environment:
-      - POSTGRES_HOST=${POSTGRES_HOST}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_NAME=${POSTGRES_NAME}
-    ports: 
-      - "5433:5432"
   web:
     build: .
-    command: bash -c "pip install -r requirements.txt && python3 src/manage.py migrate && python3 src/manage.py runserver 0.0.0.0:80"
+    command: bash -c "pip install -r requirements.txt && python3 src/manage.py migrate && python3 src/manage.py runserver"
     volumes:
       - .:/code
     ports:
@@ -23,5 +14,3 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_NAME=${POSTGRES_NAME}
-    depends_on:
-      - db
